@@ -13,7 +13,7 @@ Required packages and their versions can be found in the `hawkrad.yml` [Conda](h
 conda env create -f hawkrad.yml
 ```
 
-The code in this repository does not need any special installation because it is pure Python. The easiest way to use it is to add the `hawkrad` directory to the `PYTHONPATH` environment variable.
+The code in this repository does not need any special installation because it is pure Python. The easiest way to use it is to add the top-level repository directory (i.e., the one containing the `hawkrad` directory) to the `PYTHONPATH` environment variable.
 
 ## Data
 
