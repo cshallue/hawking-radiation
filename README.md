@@ -145,6 +145,7 @@ To avoid re-calculating the coefficients every time, we generated tables of $b_n
 ## Numerical ODEs
 
 We use `scipy` to solve for the $\rho^\text{in}$ and $\rho^\text{up}$ functions using `scipy.integrate.solve_ivp`. We solve with $r_*$ as the independent variable. The system that we solve is
+
 $$
 \frac{d}{dr_*}
 \begin{bmatrix}
