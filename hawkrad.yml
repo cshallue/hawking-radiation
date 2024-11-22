@@ -1,0 +1,17 @@
+name: hawkrad
+channels:
+  - anaconda
+  - defaults
+dependencies:
+  - astropy=5.3.4
+  - jupyterlab=4.0.11
+  - matplotlib=3.8.0
+  - numpy=1.26.4
+  - pandas=2.1.4
+  - pip=23.3.1
+  - python=3.11.8
+  - scipy=1.11.4
+  - sympy=1.11.1
+  - pip:
+      - absl-py==2.1.0
+      - ml-collections==0.1.1
