@@ -46,13 +46,13 @@ The main output files have the form `terms_ell*.npy`. Each of these corresponds 
 1. $F_\text{H}^{\overline{\text{up}}}$
 
 Each of these quantities needs to be integrated over $\omega$ (e.g. using the trapezoidal rule) and summed over $\ell$. Once integrated and summed, the detector response in the Boulware, Hartle-Hawking, and Unruh vacuum states can be calculated by:
-$$
+```math
 \begin{align}
     \mathcal{F}_\text{B} &= F_\text{B}^\text{in} + F_\text{B}^\text{up}, \\
     \mathcal{F}_\text{H} &= F_\text{H}^\text{in} + F_\text{H}^{\overline{\text{in}}} + F_\text{H}^\text{up} + F_\text{H}^{\overline{\text{up}}}, \\
     \mathcal{F}_\text{U} &= F_\text{B}^\text{in} + F_\text{H}^\text{up} + F_\text{H}^{\overline{\text{up}}}.
 \end{align}
-$$
+```
 
 ## Measurements by a static detector
 
@@ -81,9 +81,9 @@ In addition, the Schwarzschild radius $R_S = 2 G M / c^2$, where $M$ is the mass
 This means, for example, that lengths have units of $R_S$ and times have units of $R_S / c$.
 
 In these units, the Hawking temperature of the black hole is
-$$
+```math
 T_\mathrm{BH} = \frac{\hbar c^3}{8 \pi G M k_B} = \frac{\hbar c}{4 \pi R_S k_B} = \frac{1}{4\pi}.
-$$
+```
 
 Another choice of units, which is used in the paper, is to set $c = \hbar = k_B = 1$, and express quantities in units of the Hawking temperature.
 We can convert from the units used in the code to this convention by multiplying by the appropriate power of $4 \pi$. 
@@ -96,9 +96,9 @@ Depending on the context, the Schwarzschild radial coordinate is encoded in 3 di
 1. $r$, the Schwarzschild radial coordinate in units of $R_S$.
 1. $x \equiv r - 1$. We use this representation because when $r$ is very close the horizon (within around `1e-16` for 64-bit floating point numbers), $r$ is effectively truncated to 1.0, whereas $x$ can represent values much closer to the horizon (within around `1e-308`).
 1. $r_*$, the Regge-Wheeler tortoise coordinate, defined by
-$$
+```math
 r_* \equiv r + \log|r-1|.
-$$
+```
 
 ## Klein-Gordon modes
 
@@ -115,25 +115,25 @@ In the code (and in the remainder of this README), `rhoIn` and `rhoUp` correspon
 We use power series expansions for the in modes asymptotically close to the horizon and for the up modes asymptotically far from the horizon, as described in Hodgkinson [1].
 
 For the in modes, we write
-$$
+```math
 \rho(r_*) = e^{-i \omega r_*} w(r)
-$$
+```
 and expand $w(r)$ in a power series
-$$
+```math
 w(r) = \sum_{n=0}^\infty b_n x^{n},
-$$
+```
 for $x \ll 1$ (where $x = r - 1$ as defined above).
 
 The $b_n$ coefficients can be calculated from an explicit recurrence relation [1].
 
 For the up modes, we write
-$$
+```math
 \rho(r_*) = e^{i \omega r_*} e^{v(r)}
-$$
+```
 and expand $v(r)$ in a power series
-$$
+```math
 v(r) = \sum_{n=0}^\infty c_n r^{-n},
-$$
+```
 for $r \gg 1$.
 
 The $c_n$ coefficients can be solved for algebraically in a recursive manner [1]. We calculated these expressions in Mathematica. The file `c-coeffs-100.dat` in the data archive contains the coefficients for $n \leq 100$ in a format that can be read by Mathematica's `Get` function. The file `c-coeffs-100.csv` contains the same coefficients in a format that can be read by the `CoeffGenerator` class.
@@ -145,8 +145,7 @@ To avoid re-calculating the coefficients every time, we generated tables of $b_n
 ## Numerical ODEs
 
 We use `scipy` to solve for the $\rho^\text{in}$ and $\rho^\text{up}$ functions using `scipy.integrate.solve_ivp`. We solve with $r_*$ as the independent variable. The system that we solve is
-
-$$
+```math
 \frac{d}{dr_*}
 \begin{bmatrix}
 \rho \\
@@ -159,7 +158,7 @@ d\rho / dr_*\\
 (V_\ell(r) - \omega^2) \rho \\
 1 - r^{-1}
 \end{bmatrix},
-$$
+```
 where $x = r-1$, as defined above.
 
 In order to solve for the in and up modes, we specify boundary conditions by evaluating the asymptotic solutions near the horizon (for the in modes) and far from the horizon (for the up modes).
