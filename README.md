@@ -4,7 +4,7 @@ This repository contains code for calculating Hawking radiation measurements by 
 
 Results and a discussion of the implementation can be found in the paper:
 
-C.J. Shallue and S.M. Carroll, *What Hawking Radiation Looks Like as You Fall into a Black Hole*, 2024.
+C.J. Shallue and S.M. Carroll, *What Hawking Radiation Looks Like as You Fall into a Black Hole* (2025). [arXiv:2501.06609](https://arxiv.org/abs/2501.06609).
 
 ## Installation
 
@@ -169,7 +169,7 @@ Since solving these ODEs accounts for a significant component of the overall run
 
 If you find this code useful, please consider citing the paper
 
-C.J. Shallue and S.M. Carroll, *What Hawking Radiation Looks Like as You Fall into a Black Hole*, 2024.
+C.J. Shallue and S.M. Carroll, *What Hawking Radiation Looks Like as You Fall into a Black Hole* (2025). [arXiv:2501.06609](https://arxiv.org/abs/2501.06609).
 
 # References
 
