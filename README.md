@@ -91,10 +91,10 @@ For example, a proper time interval $\Delta \tau$ in the code has units of $R_S$
 
 ## Radial coordinates
 
-Depending on the context, the Schwarzschild radial coordinate is encoded in 3 different ways in the code:
+Schwarzschild radial coordinates are represented in 3 different ways in the code. In a given situation, the representation used is based convenience, naturalness and/or numerically stability.
 
 1. $r$, the Schwarzschild radial coordinate in units of $R_S$.
-1. $x \equiv r - 1$. We use this representation because when $r$ is very close the horizon (within around `1e-16` for 64-bit floating point numbers), $r$ is effectively truncated to 1.0, whereas $x$ can represent values much closer to the horizon (within around `1e-308`).
+1. $x \equiv r - 1$. This representation is convenient if we want to allow $r$ to be very close the horizon (within around `1e-16` for 64-bit floating point numbers). In this case, $r$ would be truncated to 1.0, whereas $x$ can represent values much closer to the horizon (within around `1e-308`).
 1. $r_*$, the Regge-Wheeler tortoise coordinate, defined by
 ```math
 r_* \equiv r + \log|r-1|.
